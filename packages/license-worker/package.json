@@ -1,0 +1,19 @@
+{
+  "name": "@vss/license-worker",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Cloudflare Worker (Hono) that validates Polar.sh license keys and meters 10 free audits/generations per user.",
+  "scripts": {
+    "dev": "npx --yes wrangler@4 dev",
+    "deploy": "npx --yes wrangler@4 deploy",
+    "typecheck": "tsc -p tsconfig.json",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "hono": "^4.13.13"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20250101.0"
+  }
+}

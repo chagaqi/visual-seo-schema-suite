@@ -1,0 +1,28 @@
+{
+  "name": "@vss/framer-plugin",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Visual SEO & Schema Suite — Framer Plugin host adapter.",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "build:e2e": "vite build --mode e2e",
+    "preview": "vite preview",
+    "preview:e2e": "vite preview --mode e2e --port 4301 --strictPort",
+    "pack": "npm run build && npx --yes framer-plugin-tools@1.2.2 pack",
+    "typecheck": "tsc -p tsconfig.json",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@vss/core-engine": "1.0.0",
+    "@vss/ui-kit": "1.0.0",
+    "@framer/plugin": "^5.1.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "vite-plugin-framer": "^1.1.1",
+    "vite-plugin-mkcert": "^1.17.8"
+  }
+}

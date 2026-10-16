@@ -1,0 +1,17 @@
+{
+  "name": "@vss/core-engine",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Deterministic SEO + accessibility engine: alt text, meta descriptions, WCAG contrast, SVG minification, JSON-LD schema, throttled retries.",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.135.0"
+  }
+}
