@@ -91,6 +91,9 @@ export type CmsUpdate =
   | { itemId: string; fieldId: string; kind: "text"; value: string }
   | { itemId: string; fieldId: string; kind: "image-alt"; value: string }
 
+/** "site" = every page (global head code); "page" = the current page only. */
+export type StructuredDataTarget = "site" | "page"
+
 export interface StructuredDataResult {
   /** e.g. "framer.setCustomCode(headEnd)", "webflow DOM element", "clipboard" */
   method: string
@@ -141,8 +144,8 @@ export interface HostAdapter {
     signal?: AbortSignal,
   ): Promise<ApplyResult>
 
-  getStructuredData(): Promise<JsonLdObject[]>
-  saveStructuredData(objects: JsonLdObject[]): Promise<StructuredDataResult>
+  getStructuredData(target: StructuredDataTarget): Promise<JsonLdObject[]>
+  saveStructuredData(objects: JsonLdObject[], target: StructuredDataTarget): Promise<StructuredDataResult>
 
   getSelectedSvg?(): Promise<SelectedSvg | null>
   insertSvg?(svg: string, name: string): Promise<void>

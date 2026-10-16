@@ -78,7 +78,7 @@ export interface AltLintIssue {
 }
 
 const REDUNDANT_PREFIX = /^(an?\s+)?(image|picture|photo|photograph|graphic|pic|img|icon|logo)\s+(of|showing|shows|depicting|with)\s+/i
-const PLACEHOLDER = /^(alt|image|img|photo|picture|pic|graphic|untitled|placeholder|todo|tbd|test|asdf|null|undefined|none|\.|-|_)$/i
+const PLACEHOLDER = /^(alt|image|img|photo|picture|pic|graphic|logo|icon|banner|hero|thumbnail|avatar|screenshot|untitled|placeholder|todo|tbd|test|asdf|null|undefined|none|\.|-|_)$/i
 
 /** WCAG 1.1.1 oriented lint for a single alt text. */
 export function lintAltText(
@@ -139,6 +139,8 @@ function cleanSubject(input: string): string {
 function layerCandidate(name: string | null | undefined): Candidate | null {
   if (!name || isDefaultLayerName(name)) return null
   const parsed = parseImageFilename(name)
+  // Names made only of kind/noise words ("Divider", "Logo", "Hero bg") describe nothing.
+  if (!parsed.extension && parseImageFilename(name.trim().replace(/\s+/g, "-")).tokens.length === 0) return null
   // A layer named like a file ("hero.png") → parse it; otherwise keep human wording/casing.
   const subject = parsed.extension ? parsed.phrase : cleanSubject(name.replace(/\s*\d+$/, ""))
   if (!subject || contentWords(subject).length === 0) return null

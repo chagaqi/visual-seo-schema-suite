@@ -1,0 +1,70 @@
+html,
+body,
+#root {
+  height: 100%;
+}
+body {
+  margin: 0;
+  background: #0a0a0a;
+  color: #eaeaea;
+  font-family: Inter, system-ui, sans-serif;
+}
+.pg {
+  display: flex;
+  gap: 24px;
+  padding: 24px;
+  height: 100%;
+  box-sizing: border-box;
+  align-items: stretch;
+}
+.pg-controls {
+  width: 260px;
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-size: 13px;
+}
+.pg-controls h1 {
+  font-size: 16px;
+  margin: 0;
+}
+.pg-controls p {
+  color: #a0a0a0;
+  margin: 0;
+  line-height: 1.5;
+}
+.pg-controls label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.pg-controls select,
+.pg-controls button {
+  font: inherit;
+  padding: 6px 8px;
+  border-radius: 6px;
+  border: 1px solid #333;
+  background: #1a1a1a;
+  color: inherit;
+}
+.pg-controls pre {
+  font-size: 11px;
+  max-height: 300px;
+  overflow: auto;
+}
+.pg-frame {
+  flex: none;
+  height: min(760px, 100%);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.08), 0 20px 60px rgba(0, 0, 0, 0.6);
+}
+@media (max-width: 720px) {
+  .pg {
+    flex-direction: column;
+  }
+  .pg-frame {
+    width: 100% !important;
+  }
+}
