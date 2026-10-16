@@ -22,6 +22,8 @@ export type AuditNode =
       id: string
       name?: string | null
       src?: string | null
+      /** Original asset filename when the URL doesn't carry it. */
+      filename?: string | null
       alt?: string | null
       decorative?: boolean
       width?: number | null
@@ -192,6 +194,7 @@ export function auditAccessibility(input: AuditInput): AuditReport {
         const generated = generateAltText(
           {
             src: node.src ?? undefined,
+            filename: node.filename ?? undefined,
             layerName: node.name,
             nearbyText: node.nearbyText,
             width: node.width,

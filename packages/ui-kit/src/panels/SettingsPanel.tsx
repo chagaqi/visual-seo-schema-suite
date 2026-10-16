@@ -60,6 +60,52 @@ export function LicenseForm({ onActivated }: { onActivated?: () => void }) {
   )
 }
 
+function HostSettings() {
+  const { adapter } = useSuite()
+  const fields = adapter.settingsFields ?? []
+  const [values, setValues] = useState<Record<string, string>>({})
+  const [msg, setMsg] = useState("")
+  useEffect(() => {
+    let cancelled = false
+    void Promise.all(fields.map(async (f) => [f.key, (await adapter.deviceStorage.get(f.key)) ?? ""] as const)).then((entries) => {
+      if (!cancelled) setValues(Object.fromEntries(entries))
+    })
+    return () => {
+      cancelled = true
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [adapter])
+  if (!fields.length) return null
+  return (
+    <Card title={`${adapter.displayName} connection`}>
+      {fields.map((f) => (
+        <Field key={f.key} label={f.label} help={f.help}>
+          {(id, d) => (
+            <TextInput
+              id={id}
+              aria-describedby={d}
+              type={f.secret ? "password" : "text"}
+              autoComplete="off"
+              placeholder={f.placeholder}
+              value={values[f.key] ?? ""}
+              onChange={(e) => setValues((v) => ({ ...v, [f.key]: e.target.value }))}
+            />
+          )}
+        </Field>
+      ))}
+      <Button
+        onClick={async () => {
+          await Promise.all(fields.map((f) => adapter.deviceStorage.set(f.key, values[f.key]?.trim() || null)))
+          setMsg("Saved on this device.")
+        }}
+      >
+        Save connection
+      </Button>
+      <Status>{msg}</Status>
+    </Card>
+  )
+}
+
 export function SettingsPanel() {
   const { settings, updateSettings, ai, updateAi, usage } = useSuite()
   const [brand, setBrand] = useState(settings.brand)
@@ -90,6 +136,8 @@ export function SettingsPanel() {
         )}
         <LicenseForm />
       </Card>
+
+      <HostSettings />
 
       <Card title="Site defaults">
         <Field label="Brand / site name">{(id) => <TextInput id={id} value={brand} onChange={(e) => setBrand(e.target.value)} />}</Field>

@@ -114,12 +114,22 @@ export interface HostCapabilities {
   auditFixes: boolean
 }
 
+/** Extra host-specific settings rendered in the Settings tab and stored in device storage. */
+export interface HostSettingField {
+  key: string
+  label: string
+  help?: string
+  placeholder?: string
+  secret?: boolean
+}
+
 export type NotifyVariant = "info" | "success" | "warning" | "error"
 
 export interface HostAdapter {
   readonly name: HostName
   readonly displayName: string
   readonly capabilities: HostCapabilities
+  readonly settingsFields?: HostSettingField[]
   getUser(): Promise<{ id: string; name?: string | null }>
   /** Project/site-scoped storage (Framer plugin data, Webflow localStorage keyed by site). */
   projectStorage: KeyValueStore
