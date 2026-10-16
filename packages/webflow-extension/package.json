@@ -1,0 +1,27 @@
+{
+  "name": "@vss/webflow-extension",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Visual SEO & Schema Suite — Webflow v2 Designer Extension host adapter with a throttled CMS batch updater.",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "build:e2e": "vite build --mode e2e",
+    "preview": "vite preview",
+    "preview:e2e": "vite preview --mode e2e --port 4302 --strictPort",
+    "pack": "npm run build && npx --yes @webflow/webflow-cli@2.12.0 extension bundle",
+    "serve:designer": "npx --yes @webflow/webflow-cli@2.12.0 extension serve",
+    "typecheck": "tsc -p tsconfig.json",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@vss/core-engine": "1.0.0",
+    "@vss/ui-kit": "1.0.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@webflow/designer-extension-typings": "^2.2.2"
+  }
+}

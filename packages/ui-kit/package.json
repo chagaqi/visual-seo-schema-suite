@@ -1,0 +1,22 @@
+{
+  "name": "@vss/ui-kit",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Dark-mode React UI shared by the Framer plugin, the Webflow Designer Extension and the playground.",
+  "exports": {
+    ".": "./src/index.ts",
+    "./styles.css": "./src/styles.css"
+  },
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@vss/core-engine": "1.0.0"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}

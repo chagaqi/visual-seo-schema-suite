@@ -1,0 +1,5 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": { "types": ["vite/client", "@webflow/designer-extension-typings"] },
+  "include": ["src", "test", "vite.config.ts"]
+}

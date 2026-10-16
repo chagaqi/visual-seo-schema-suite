@@ -1,0 +1,49 @@
+{
+  "name": "visual-seo-schema-suite",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Bulk alt-text, meta descriptions, WCAG contrast audits, SVG minification and JSON-LD schema building for Framer and Webflow from one shared React + TypeScript core.",
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "workspaces": [
+    "packages/core-engine",
+    "packages/ui-kit",
+    "packages/framer-plugin",
+    "packages/webflow-extension",
+    "packages/license-worker",
+    "playground"
+  ],
+  "scripts": {
+    "dev": "npm run dev -w @vss/playground",
+    "build": "npm run build -w @vss/framer-plugin && npm run build -w @vss/webflow-extension && npm run build -w @vss/playground",
+    "build:e2e": "npm run build:e2e -w @vss/framer-plugin && npm run build:e2e -w @vss/webflow-extension && npm run build -w @vss/playground",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:e2e": "npm run build:e2e && playwright test",
+    "assets": "npm run build -w @vss/playground && node scripts/generate-assets.mjs",
+    "pack:framer": "npm run pack -w @vss/framer-plugin",
+    "pack:webflow": "npm run pack -w @vss/webflow-extension",
+    "verify": "npm run typecheck && npm test && npm run test:e2e"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.13.0",
+    "@playwright/test": "1.56.1",
+    "@testing-library/jest-dom": "6.9.1",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/node": "^22.20.5",
+    "@types/react": "^18.3.31",
+    "@types/react-dom": "^18.3.7",
+    "@vitejs/plugin-react": "^6.1.2",
+    "jsdom": "^27.4.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "typescript": "~5.9.3",
+    "vite": "^8.3.4",
+    "vitest": "^5.0.5"
+  }
+}
