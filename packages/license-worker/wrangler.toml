@@ -1,0 +1,22 @@
+name = "vss-license-worker"
+main = "src/index.ts"
+compatibility_date = "2026-09-01"
+compatibility_flags = ["nodejs_compat"]
+
+[vars]
+FREE_LIMIT = "10"
+IP_DAILY_LIMIT = "60"
+POLAR_API_BASE = "https://api.polar.sh"
+# Your Polar organization id (Settings › General). Use https://sandbox-api.polar.sh while testing.
+POLAR_ORGANIZATION_ID = "REPLACE_WITH_POLAR_ORGANIZATION_ID"
+CHECKOUT_URL = "https://polar.sh/REPLACE_ORG/products/REPLACE_PRODUCT"
+# Optional: restrict to one license-key benefit
+# POLAR_BENEFIT_ID = ""
+# Optional: extra comma-separated CORS origins
+# ALLOWED_ORIGINS = ""
+
+# Secrets (never commit): npx wrangler secret put POLAR_ACCESS_TOKEN
+
+[[kv_namespaces]]
+binding = "USAGE"
+id = "REPLACE_WITH_KV_NAMESPACE_ID" # npx wrangler kv namespace create USAGE
