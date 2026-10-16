@@ -24,7 +24,7 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:e2e": "npm run build:e2e && playwright test",
-    "assets": "node scripts/generate-assets.mjs",
+    "assets": "npm run build -w @vss/playground && node scripts/generate-assets.mjs",
     "pack:framer": "npm run pack -w @vss/framer-plugin",
     "pack:webflow": "npm run pack -w @vss/webflow-extension",
     "verify": "npm run typecheck && npm test && npm run test:e2e"

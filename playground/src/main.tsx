@@ -24,6 +24,15 @@ function Playground() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [seed])
 
+  if (params.get("embed") === "1") {
+    // Chrome-less mode for screenshots / iframes: just the plugin UI, full size.
+    return (
+      <div className="pg-embed">
+        <SuiteApp adapter={adapter} theme={theme} />
+      </div>
+    )
+  }
+
   return (
     <div className="pg">
       <aside className="pg-controls" aria-label="Playground controls">

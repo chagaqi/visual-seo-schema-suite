@@ -68,3 +68,6 @@ body {
     width: 100% !important;
   }
 }
+.pg-embed {
+  height: 100%;
+}
