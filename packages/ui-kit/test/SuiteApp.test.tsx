@@ -23,7 +23,7 @@ describe("theme", () => {
     const root = container.querySelector(".vss-root") as HTMLElement
     expect(root.dataset.vssTheme).toBe("webflow")
     expect(root.dataset.vssHost).toBe("playground")
-    expect(root.style.getPropertyValue("--vss-accent")).toBe("#006acc")
+    expect(root.style.getPropertyValue("--vss-button-bg")).toBe("#006acc")
   })
 })
 

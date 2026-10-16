@@ -161,7 +161,7 @@
   cursor: not-allowed;
 }
 .vss-btn--primary {
-  background: var(--vss-accent);
+  background: var(--vss-button-bg);
   color: var(--vss-accent-text);
 }
 .vss-btn--primary:hover:not(:disabled) {
@@ -463,8 +463,8 @@
   cursor: pointer;
 }
 .vss-chip[aria-pressed="true"] {
-  background: var(--vss-accent);
-  border-color: var(--vss-accent);
+  background: var(--vss-button-bg);
+  border-color: var(--vss-button-bg);
   color: var(--vss-accent-text);
 }
 

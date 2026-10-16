@@ -122,7 +122,7 @@ export function SvgPanel() {
               <figcaption className="vss-help">Optimized</figcaption>
             </figure>
           </div>
-          <pre className="vss-code" data-testid="svg-output">{r.svg}</pre>
+          <pre className="vss-code" data-testid="svg-output" tabIndex={0} role="region" aria-label="Optimized SVG markup">{r.svg}</pre>
           <div className="vss-row">
             {adapter.insertSvg && (
               <Button variant="primary" onClick={insert} loading={pending === "insert"}>

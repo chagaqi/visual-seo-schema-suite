@@ -17,6 +17,8 @@ export interface ThemeTokens {
   accent: string
   accentHover: string
   accentText: string
+  /** Primary button fill; darker than the brand tint where needed so white labels meet WCAG AA (4.5:1). */
+  buttonBg: string
   danger: string
   warning: string
   success: string
@@ -38,11 +40,12 @@ export const THEMES: Record<ThemeName, ThemeTokens> = {
     border: "var(--framer-color-divider, rgba(255, 255, 255, 0.08))",
     text: "var(--framer-color-text, #ffffff)",
     textSecondary: "var(--framer-color-text-secondary, #999999)",
-    textTertiary: "var(--framer-color-text-tertiary, #8a8a8a)",
+    textTertiary: "var(--framer-color-text-tertiary, #9a9a9a)",
     accent: "var(--framer-color-tint, #0099ff)",
-    accentHover: "var(--framer-color-tint-dark, #0088e6)",
+    accentHover: "var(--framer-color-tint-extra-dark, #0066b3)",
     accentText: "var(--framer-color-text-reversed, #ffffff)",
-    danger: "#ff4d6d",
+    buttonBg: "var(--framer-color-tint-dark, #0077cc)",
+    danger: "#ff6b85",
     warning: "#ffb020",
     success: "#22cc88",
     focus: "var(--framer-color-tint, #0099ff)",
@@ -62,10 +65,11 @@ export const THEMES: Record<ThemeName, ThemeTokens> = {
     text: "#f5f5f5",
     textSecondary: "#bdbdbd",
     textTertiary: "#a3a3a3",
-    accent: "#006acc",
+    accent: "#62a8ff",
     accentHover: "#0073e6",
     accentText: "#ffffff",
-    danger: "#ff6b6b",
+    buttonBg: "#006acc",
+    danger: "#ff8a8a",
     warning: "#f5a623",
     success: "#2fbf71",
     focus: "#3d8bfd",
@@ -84,10 +88,11 @@ export const THEMES: Record<ThemeName, ThemeTokens> = {
     border: "rgba(0, 0, 0, 0.1)",
     text: "#111111",
     textSecondary: "#5c5c5c",
-    textTertiary: "#6e6e6e",
-    accent: "#0070d6",
+    textTertiary: "#636363",
+    accent: "#0062bd",
     accentHover: "#005fb8",
     accentText: "#ffffff",
+    buttonBg: "#0070d6",
     danger: "#c8102e",
     warning: "#8a5a00",
     success: "#0b7a4b",
@@ -113,6 +118,7 @@ const KEY_TO_VAR: Record<keyof ThemeTokens, string> = {
   accent: "--vss-accent",
   accentHover: "--vss-accent-hover",
   accentText: "--vss-accent-text",
+  buttonBg: "--vss-button-bg",
   danger: "--vss-danger",
   warning: "--vss-warning",
   success: "--vss-success",

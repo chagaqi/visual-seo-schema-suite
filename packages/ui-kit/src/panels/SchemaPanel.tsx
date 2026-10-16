@@ -303,7 +303,7 @@ export function SchemaPanel() {
             ))}
           </ul>
         )}
-        <pre className="vss-code" data-testid="schema-json">{JSON.stringify(jsonld, null, 2)}</pre>
+        <pre className="vss-code" data-testid="schema-json" tabIndex={0} role="region" aria-label="Generated JSON-LD">{JSON.stringify(jsonld, null, 2)}</pre>
         <Field label="Apply to">
           {(id) => (
             <Select
